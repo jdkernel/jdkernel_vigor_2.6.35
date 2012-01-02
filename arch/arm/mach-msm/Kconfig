@@ -1407,12 +1407,20 @@ config MSM_CPU_FREQ_SET_MIN_MAX
 config MSM_CPU_FREQ_MAX
 	int "Max CPU Frequency"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
-	default 384000
+	default 1512000
 
 config MSM_CPU_FREQ_MIN
 	int "Min CPU Frequency"
 	depends on MSM_CPU_FREQ_SET_MIN_MAX
-	default 245760
+	default 384000
+
+config MSM_CPU_FREQ_POLICY_MIN
+	int "Min freq for CPUFREQ Policy"
+	default 384000
+
+config MSM_CPU_FREQ_POLICY_MAX
+	int "Max freq for CPUFREQ Policy"
+	default 1188000
 
 endif # CPU_FREQ_MSM
 
@@ -1435,6 +1443,8 @@ config MSM_CPU_FREQ_SCREEN_ON
 
 endif # MSM_CPU_FREQ_SCREEN
 
+if PERFLOCK
+
 config MSM_CPU_FREQ_ONDEMAND_MAX
 	int "Max"
 	default 384000
@@ -1442,6 +1452,8 @@ config MSM_CPU_FREQ_ONDEMAND_MAX
 config MSM_CPU_FREQ_ONDEMAND_MIN
 	int "Min"
 	default 245760
+
+endif # PERFLOCK
 
 config MSM_HW3D
 	tristate "MSM Hardware 3D Register Driver"
