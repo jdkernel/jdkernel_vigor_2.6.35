@@ -248,6 +248,7 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 	  If in doubt, say N.
 
+
 config CPU_FREQ_GOV_LAGFREE
         tristate "'lagfree' cpufreq governor"
         depends on CPU_FREQ
@@ -285,5 +286,26 @@ config CPU_FREQ_SAMPLING_LATENCY_MULTIPLIER
 	help
 	  Sampling latency rate multiplied by the cpu switch latency.
 	  Affects governor polling.
+
+config VDD_USERSPACE
+	bool "VDD sysfs interface"
+	default n
+	depends on CPU_FREQ_STAT
+	help
+	  exposes the VDD table to userspace
+	  allows users to adjust voltages on the fly
+
+config CPU_FREQ_MIN_VDD
+	int "Minimum VDD (uV)"
+	default 700000
+	help
+		Minimum VDD level in uV
+
+config CPU_FREQ_MAX_VDD
+	int "Maximum VDD (uV)"
+	default 1600000
+	help
+		Maximum VDD level in uV
+
 
 endif	# CPU_FREQ
