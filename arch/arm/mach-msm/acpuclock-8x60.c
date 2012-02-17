@@ -452,8 +452,8 @@ static int increase_vdd(int cpu, unsigned int vdd_sc, unsigned int vdd_mem,
 	/* Update per-core Scorpion voltage. */
 	rc = regulator_set_voltage(regulator_sc[cpu], vdd_sc, MAX_VDD_SC);
 	if (rc) {
-		pr_err("%s: vdd_sc (cpu%d) increase failed (%d)\n",
-			__func__, cpu, rc);
+		pr_err("%s: vdd_sc (cpu%d) increase failed (%d) - vdd_sc (%d) - MAX_VDD_SC (%d)\n",
+			__func__, cpu, rc, vdd_sc, MAX_VDD_SC);
 		return rc;
 	}
 
@@ -469,8 +469,8 @@ static void decrease_vdd(int cpu, unsigned int vdd_sc, unsigned int vdd_mem,
 	/* Update per-core Scorpion voltage. */
 	ret = regulator_set_voltage(regulator_sc[cpu], vdd_sc, MAX_VDD_SC);
 	if (ret) {
-		pr_err("%s: vdd_sc (cpu%d) decrease failed (%d)\n",
-			__func__, cpu, ret);
+		pr_err("%s: vdd_sc (cpu%d) decrease failed (%d) - vdd_sc (%d) - MAX_VDD_SC (%d)\n",
+			__func__, cpu, ret, vdd_sc, MAX_VDD_SC);
 		return;
 	}
 
